@@ -5,4 +5,10 @@
 
     <h1>All Blogs</h1>
 
+    {% for blog in blogs %}
+        <h3>{{ blog.title }}</h3>
+        <h5>{{ blog.pub_date_beautify }}</h5>
+        <p>{{ blog.description }}</p>
+    {% endfor %}
+
 {% endblock %}
