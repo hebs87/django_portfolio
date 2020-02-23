@@ -15,4 +15,4 @@ class Project(models.Model):
     url = models.URLField(blank=True)
 
     def __str__(self):
-        return "You've added {} to your portfolio!".format(self.title)
+        return "#{0} - {1}".format(self.id, self.title)
