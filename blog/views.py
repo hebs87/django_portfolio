@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Blog
 
 
@@ -17,3 +17,17 @@ def all_blogs(request):
     }
 
     return render(request, 'all_blogs.html', context)
+
+
+def detail(request, blog_id):
+    """
+    A view that displays the details of a particular
+    blog that matches the blog_id
+    """
+    blog = get_object_or_404(Blog, pk=blog_id)
+
+    context = {
+        'blog': blog
+    }
+
+    return render(request, 'detail.html', context)
