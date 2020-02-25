@@ -4,13 +4,17 @@
 {% block content %}
 
     <h1>All Blogs</h1>
+    <!--Displays the number of blogs and adds 's' to the end of "blog" if multiple-->
+    <h3>Sunny has written {{ blogs_count }} blog{{ blogs_count | pluralize }}!</h3>
 
     {% for blog in blogs %}
         <a href="{% url 'blog:detail' blog.id %}">
             <h3>{{ blog.title }}</h3>
         </a>
-        <h5>{{ blog.pub_date_beautify }}</h5>
-        <p>{{ blog.description }}</p>
+        <h5>{{ blog.pub_date_beautify | upper }}</h5>
+        <!-- Truncate the description to 100 characters and remove any
+         potential HTML formatting in the post too using striptags -->
+        <p>{{ blog.description | striptags | truncatechars:100 }}</p>
     {% endfor %}
 
 {% endblock %}

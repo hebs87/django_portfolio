@@ -11,9 +11,12 @@ def all_blogs(request):
     injects the blogs into it
     """
     blogs = Blog.objects.order_by('-pub_date')[:5]
+    # This is the count of ALL blogs
+    blogs_count = Blog.objects.count()
 
     context = {
-        'blogs': blogs
+        'blogs': blogs,
+        'blogs_count': blogs_count
     }
 
     return render(request, 'all_blogs.html', context)

@@ -4,5 +4,9 @@
 {% block content %}
 
     <h1>{{ blog.title }}</h1>
+    <h2>--{{ blog.pub_date_beautify }}--</h2>
+    <!-- Mark as safe to display any potential HTML formatting
+     in the post itself -->
+    <p>{{ blog.description | safe }}</p>
 
 {% endblock %}
